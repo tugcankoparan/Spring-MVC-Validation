@@ -146,16 +146,14 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
        return promoCodeInterceptor;
     }
     
-    @Bean(name = "validator")
-    public LocalValidatorFactoryBean validator() {
+    @Bean 
+    public LocalValidatorFactoryBean localValidatorFactoryBean() {
        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
        bean.setValidationMessageSource(messageSource());
        return bean;
     }
-    
     @Override
     public Validator getValidator(){
-       return validator();
+       return localValidatorFactoryBean();
     }
-
 }
